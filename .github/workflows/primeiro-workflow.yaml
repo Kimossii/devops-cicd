@@ -14,4 +14,4 @@ jobs:
         uses: actions/checkout@v6
 
       - name: Mostrar mensagem de boas-vindas
-        run: echo "Bem-vindo ao meu primeiro workflow de DevOps!"
+        run: echo "Bem-vindo ao meu primeiro workflow de Agora!"
