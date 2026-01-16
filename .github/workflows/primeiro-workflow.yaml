@@ -13,5 +13,37 @@ jobs:
       - name: Checkout de Código
         uses: actions/checkout@v6
 
-      - name: Mostrar mensagem de boas-vindas
-        run: echo "Bem-vindo ao meu primeiro workflow de Agora!"
+      - name: Build Aplicação
+        run: echo "Buildando a Aplicação!"
+  dev:
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: Fase de desenvolvimento
+        run: echo "Deploy no ambiente de desenvolvimento!"
+
+  qa:
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: Fase de Qualidade
+        run: echo "Deploy no ambiente de Qualidade!"
+  homologacao:
+    runs-on: ubuntu-latest
+    needs:
+     - dev
+     - qa
+
+    steps:
+      - name: "Deploy de Homologação"
+        run: echo "Execução no ambiente de Homologação!"
+
+  producao:
+    runs-on: ubuntu-latest
+    needs: homologacao
+
+    steps:
+      - name: "Deploy de Produção"
+        run: echo "Execução no ambiente de Produção!"
